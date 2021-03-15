@@ -8,7 +8,18 @@ body {
   line-height: 30px;
   color: #ababab;
 }
-
+.logout {
+	text-align:right;
+	padding-right:10px;
+  padding-top:5px;
+	text-color:black;
+}
+.icon {
+  display: block;
+  font-size: 25px;
+  line-height: 30px;
+  margin-bottom: 11px;
+}
 a {
   color: inherit;
   -webkit-transition: all 0.3s ease 0s;
