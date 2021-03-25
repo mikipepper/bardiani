@@ -10,7 +10,7 @@
         <!-- mobile viwport meta -->
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- fevicon -->
-        <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+        <!--<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">-->
         <!--fontawesome-->
         <script src="https://kit.fontawesome.com/cc732eaf41.js" crossorigin="anonymous"></script>
         <!-- ================================
@@ -59,13 +59,15 @@
                                       <!-- Login Form -->
                                       <form>
                                         <input type="text" id="login" class="fadeIn second" name="login" placeholder="email">
-                                        <input type="text" id="password" class="fadeIn third" name="login" placeholder="password">
-                                        <input type="submit" class="fadeIn fourth" value="Log In">
+                                        <input type="text" id="password" class="fadeIn third" name="login" placeholder="password"/>
+                                        <a href="javascript:void(0);" id="login">
+                                            Login
+                                           </a>
                                       </form>
                                   
                                       <!-- Remind Passowrd -->
                                       <div id="formFooter">
-                                        <a class="underlineHover" href="#">Forgot Password?</a>
+                                        <a class="underlineHover" href="forgot.html">Password dimenticata?</a>
                                       </div>
                                   
                                     </div>
@@ -94,3 +96,23 @@
         <script src="js/main.js"></script>
     </body>
 </html>
+echo <script>
+    $(document).ready(function(){
+        $("#login").click(function(){
+            var pw= $("#password").val();
+            var em = $("#email").val();
+            var dataString = "pwl="+pw+"$eml="+em;
+            $.post('/php/ajaxlogin.php',  {wmail: em, password: pw}, risultato, 'json');
+        });
+        return false;
+    });
+function risultato(result){
+    if(result = 1){
+                $("index.html").html(result);}
+                 else(result = 0)=>{
+                 'alert("Password errata, riprova!");' 
+        };
+}
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
