@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html class="no-js" lang="">
+    <head>
+        <!-- meta charset -->
+        <meta charset="utf-8">
+        <!-- site title -->
+        <title>Bardiani Valvole</title>
+        <!-- meta description -->
+        <meta name="description" content="">
+        <!-- mobile viwport meta -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- fevicon -->
+        <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+        <!--fontawesome-->
+        <script src="https://kit.fontawesome.com/cc732eaf41.js" crossorigin="anonymous"></script>
+        <!-- ================================
+        CSS Files
+        ================================= -->
+        <link href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i|Open+Sans:400,600,700,800" rel="stylesheet">
+        <link rel="stylesheet" href="css/themefisher-fonts.min.css">
+        <link rel="stylesheet" href="css/owl.carousel.min.css">
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/dark.css">
+    </head>
+
+    <body class="dark">
+        <div class="preloader">
+            <div class="loading-mask"></div>
+            <div class="loading-mask"></div>
+            <div class="loading-mask"></div>
+            <div class="loading-mask"></div>
+            <div class="loading-mask"></div>
+        </div>
+        </div>
+
+        <main class="site-wrapper">
+            <div class="pt-table">
+                <div class="pt-tablecell page-home relative" style="background-image: url('img/banner.jpg');">
+                    <div class="overlay"></div>
+
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xs-12 col-md-offset-1 col-md-10 col-lg-offset-2 col-lg-8">
+                                <div class="page-title home text-center">
+                                    <h1>BARDIANI VALVOLE CALCOLO IMBALLAGGI</h1>
+                                    <p>Software per calcolo dimensioni imballaggi Bardiani Valvole</p>
+                                </div>
+                                <h2>Ricerca Imballaggio</h2>
+                                <form action="ListaImballaggi.php" method="POST">
+                                    <span>ID Imballaggio</span> <br>
+                                    <input type="text" name="id_imballaggio"><br>
+                                    <span>Nome dell'Imballaggio</span><br>
+                                    <input type="text" name="nome"><br>
+                                    <span>Volume dell'imballaggio</span><br>
+                                    <input type="text" name="volume"><br>
+                                    <span>Lunghezza dell'imballaggio</span><br>
+                                    <input type="text" name="lunghezza"><br>
+                                    <span>Larghezza dell'imballaggio</span><br>
+                                    <input type="text" name="larghezza"><br>
+                                    <span>Altezza dell'imballaggio</span><br>
+                                    <input type="text" name="altezza"><br>
+                                    <br>
+                                    <input type="submit" name="cerca">
+                                </form><!-- /.hexagon-menu -->
+
+                            </div> <!-- /.col-xs-12 -->
+
+                        </div> <!-- /.row -->
+                    </div> <!-- /.container -->
+
+                </div> <!-- /.pt-tablecell -->
+            </div> <!-- /.pt-table -->
+        </main> <!-- /.site-wrapper -->
+        
+        <!-- ================================
+        JavaScript Libraries
+        ================================= -->
+        <script src="js/vendor/jquery-2.2.4.min.js"></script>
+        <script src="js/vendor/bootstrap.min.js"></script>
+        <!-- <script src="js/jquery.easing.min.js"></script> -->
+        <script src="js/isotope.pkgd.min.js"></script>
+        <script src="js/jquery.nicescroll.min.js"></script>
+        <script src="js/owl.carousel.min.js"></script>
+        <script src="js/jquery-validation.min.js"></script>
+        <script src="js/form.min.js"></script>
+        <script src="js/main.js"></script>
+        <?php
+    $hostname_connect = "localhost";
+	$database_connect = "Bardiani";
+	$username_connect = "root";
+	$password_connect = "";
+	
+	$connect = mysqli_connect($hostname_connect, $username_connect, $password_connect, $database_connect);
+	echo '<a href="imballaggi.html">Inserisci Imballaggio</a>';
+	
+	$condizione="";
+	
+	if(isset($_POST['id_imballaggio'])){
+		$id=$_POST['id_imballaggio'];
+		$condizione.="WHERE id_imballaggio= '".$id."'";
+	}
+	else{
+		$id=0;
+	}
+	if(isset($_POST['nome'])){
+		$nome=$_POST['nome'];
+		$condizione.="WHERE id_imballaggio= '".$id."' AND nome= '".$nome."'";
+	}
+	else{
+		$nome=0;
+	}
+	if(isset($_POST['volume'])){
+		$volume=$_POST['volume'];
+		$condizione.="WHERE id_imballaggio= '".$id."' AND nome= '".$nome."' AND volume= '".$volume."' ";
+	}
+	else{
+		$volume=0;
+	}
+	if(isset($_POST['lunghezza'])){
+		$lunghezza=$_POST['lunghezza'];
+		$condizione.="WHERE id_imballaggio= '".$id."' AND nome= '".$nome."' AND volume= '".$volume."' AND lunghezza= '".$lunghezza."' ";
+	}
+	else{
+		$lunghezza=0;
+	}
+	if(isset($_POST['larghezza'])){
+		$larghezza=$_POST['larghezza'];
+		$condizione.="WHERE id_imballaggio= '".$id."' AND nome= '".$nome."' AND volume= '".$volume."' AND lunghezza= '".$lunghezza."' AND larghezza= '".$larghezza."' ";
+	}
+	else{
+		$larghezza=0;
+	}
+	if(isset($_POST['altezza'])){
+		$altezza=$_POST['altezza'];
+		$condizione.="WHERE id_imballaggio= '".$id."' AND nome= '".$nome."' AND volume= '".$volume."' AND lunghezza= '".$lunghezza."' AND larghezza= '".$larghezza."' AND altezza= '".$altezza."' ";
+	}
+	else{
+		$altezza=0;
+	}
+	
+	if(isset($_GET['pagina'])){
+		$pagina=$_GET['pagina'];
+	}
+	else{
+		$pagina=1;
+	}
+	$x=($pagina-1)*10;
+	//$xx= ($_GET['pagina']-1)*10;	
+	
+    $query='SELECT * FROM imballaggio LIMIT '.$x.',10';
+	$ricerca1 = "SELECT * FROM imballaggio $condizione ";
+	$risultato = mysqli_query($connect,$query);
+	$risultato = mysqli_query($connect,$ricerca1);
+	
+	if($risultato){
+		$num_righe = mysqli_num_rows($risultato);
+	
+		if($num_righe>0){
+	?>
+            <table>
+				<tr>
+					<th>Id</th>
+					<th>Nome</th>
+					<th>Volume</th>
+					<th>Lunghezza</th>
+					<th>Larghezza</th>
+					<th>Altezza</th>
+				</tr>	
+		<?php
+			while($num_righe = mysqli_fetch_assoc($risultato)) {
+		?>
+		    <tr>
+				<td><?php echo $num_righe['id_imballaggio']?></td>
+				<td><?php echo $num_righe['nome']?></td>
+				<td><?php echo $num_righe['volume']?></td>
+				<td><?php echo $num_righe['lunghezza']?></td>
+				<td><?php echo $num_righe['larghezza']?></td>
+				<td><?php echo $num_righe['altezza']?></td>
+				<td><?php echo ' '.'<a href="ModificaImballaggi.php?id='.$num_righe['id_imballaggio'].'">Modifica Imballaggio</a>'?></td>
+			</tr>
+			<?php
+			}
+			echo "</table>";
+        }
+		else {
+			echo "Non ci sono imballaggi presenti!";
+		}
+		}
+      ?>
+    </body>
+</html>
