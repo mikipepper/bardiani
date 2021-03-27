@@ -57,10 +57,10 @@
                                       </div>
                                   
                                       <!-- Login Form -->
-                                      <form>
+                                      <form action="" method="POST">
                                         <input type="text" id="login" class="fadeIn second" name="login" placeholder="email">
                                         <input type="text" id="password" class="fadeIn third" name="login" placeholder="password"/>
-                                        <a href="javascript:void(0);" id="login">
+                                        <a href="" id="login">
                                             Login
                                            </a>
                                       </form>
@@ -96,13 +96,13 @@
         <script src="js/main.js"></script>
     </body>
 </html>
-echo <script>
+<script>
     $(document).ready(function(){
         $("#login").click(function(){
             var pw= $("#password").val();
             var em = $("#email").val();
             var dataString = "pwl="+pw+"$eml="+em;
-            $.post('/php/ajaxlogin.php',  {wmail: em, password: pw}, risultato, 'json');
+            $.post('/php/ajaxlogin.php',  {wmail: em, password: pw}, risultato);
         });
         return false;
     });
