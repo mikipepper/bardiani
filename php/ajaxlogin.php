@@ -2,7 +2,7 @@
 include_once('config.php');
 $error=false;
 	//recupero i dati dell'utente, se esiste
-	$q="select * from utenti where username='".pulisci($_POST['username'])."' and password='".md5(pulisci($_POST['password']))."'";
+	$q="SELECT * FROM utenti WHERE username='".pulisci($_POST['username'])."' AND password='".md5(pulisci($_POST['password']))."'";
 	$query=mysql_query($q, $db);
 
 	//se i dati inviati al form corrispondono a un utente, allora mi loggo, creo il cookie di sessione e vado a index.php
