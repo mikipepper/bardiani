@@ -2,11 +2,11 @@
 include_once('config.php');
 $error=false;
 	//recupero i dati dell'utente, se esiste
-	$q="SELECT * FROM utenti WHERE email='".pulisci($_POST['$email'])."' AND password='".md5(pulisci($_POST['$password']))."'";
-	$query=mysqli_query($q, $db_name);
-
+	$q="SELECT * FROM utenti WHERE email='".pulisci($_POST['email'])."' AND password='".md5(pulisci($_POST['password']))."'";
+	$query=mysqli_query($con, $q);
+	$result=$q;
 	//se i dati inviati al form corrispondono a un utente, allora mi loggo, creo il cookie di sessione e vado a index.php
-	if(mysqli_num_rows($query)>0){
+	if(mysqli_num_rows($result)>0){
 
 		$row=mysqli_fetch_array($query);
 
